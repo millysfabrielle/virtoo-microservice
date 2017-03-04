@@ -1,7 +1,7 @@
 # Define the port where the Widget Foundry server would be running
 server:
-  port: 9000
-  contextPath: /resource
+  port: 9001
+  contextPath: /curso
 
 logging.level.org.springframework.security: DEBUG
 
@@ -19,3 +19,6 @@ security:
           -----END PUBLIC KEY-----
       #id: openid
       #serviceId: ${PREFIX:}resource
+
+feign.hystrix.enabled: false
+logging.level.project.user.CursoClient: DEBUG

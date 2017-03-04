@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
-/*
+
 public class PreFilter extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(PreFilter.class);
@@ -37,4 +37,4 @@ public class PreFilter extends ZuulFilter {
         return null;
     }
 }
-*/
+

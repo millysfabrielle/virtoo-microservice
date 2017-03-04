@@ -1,12 +1,29 @@
-debug: true
 
 server:
   port: 8080
+
+
+cloud:
+  config:
+    failFast: true
+    discovery:
+      end: true
 
 spring:
   aop:
     proxy-target-class: true
 
+zuul:
+  routes:
+    resource:
+      path: /resource/**
+      url: http://localhost:9000/resource
+    curso:
+      path: /curso/**
+      url: http://localhost:9001/curso
+    user:
+      path: /user/**
+      url: http://localhost:9999/uaa/user
 
 security:
   user:
@@ -18,19 +35,14 @@ security:
       clientId: acme
       clientSecret: acmesecret
     resource:
+      userInfoUri: http://localhost:9999/uaa/user
       jwt:
         keyValue: |
           -----BEGIN PUBLIC KEY-----
           MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhvMhw3FBuwzN6gX6kagH0Z6abLoeRDns+m53SrpIEndNHv4m0Olj9Hp7sm1OiYz0VYlxRybhwgY8DFR6C3O7imEK02lAt/rjhEUjy2kIzeHqojJnuYgbGy0BRxMm4GFPiaQfBF9/Hn7x/JhZSWRls/dAQlRYGHi08jj6AwMf1yZbPS6FvuOJOBfLT8Opn4sp7vScVbTFt5/UZyyKqq6vALizQbBVrhGtsPxV6cY0fiPLBwpw/vYMaWzhLP+lNb/EuWMFLagg9uxTj2y5KKHvdrfOMNTJqABoSDIBhUPdao9DBCjDtVJ2V3fSIiGLR5wt287eA7oYfjiPk2N+eA+gawIDAQAB
           -----END PUBLIC KEY-----
-zuul:
-  routes:
-    resource:
-      path: /resource/**
-      url: http://localhost:9000/resource
-    user:
-      path: /user/**
-      url: http://localhost:9999/uaa/user
+
+ribbon.eureka.enabled: false
 
 logging:
   level:

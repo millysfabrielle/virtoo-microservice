@@ -9,8 +9,10 @@
 	<name>Spring Pairs Samples Proxy</name>
 
 	<modules>
-		<module>virtoo-uaa</module>
+		<module>virtoo-authserver</module>
+		<module>virtoo-gateway</module>
 		<module>virtoo-resource</module>
+		<module>virtoo-curso</module>
 	</modules>
 	
 </project>

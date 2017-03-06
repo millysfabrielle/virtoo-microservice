@@ -4,10 +4,15 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Set;
 
-
+@Order(2)
+@Component
+@SuppressWarnings("unchecked")
 public class PreFilter extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(PreFilter.class);
@@ -19,7 +24,7 @@ public class PreFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return 1;
+        return 10000;
     }
 
     @Override
@@ -29,8 +34,13 @@ public class PreFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
+        RequestContext currentContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = currentContext.getRequest();
+
+        currentContext.addZuulRequestHeader("host",  currentContext.getRequest()
+                .getHeader("host"));
+        currentContext.getZuulRequestHeaders().remove("x-forwarded-prefix");
+        ((Set<String>) currentContext.get("ignoredHeaders")).clear();
 
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 

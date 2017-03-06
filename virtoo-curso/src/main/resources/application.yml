@@ -6,19 +6,22 @@ server:
 logging.level.org.springframework.security: DEBUG
 
 
-# Disable spring basic authentication security
 security:
   basic.enabled: false
   oauth2:
+#    client:
+#      client-id: acme
+#      client-secret: acmesecret
+#      access-token-uri: http://localhost:8080/oauth/token
+#      user-authorization-uri: http://localhost:8080/oauth/authorize
     resource:
-      userInfoUri: http://localhost:9999/uaa/user
+      userInfoUri: http://localhost:8080/user
       jwt:
         keyValue: |
           -----BEGIN PUBLIC KEY-----
           MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhvMhw3FBuwzN6gX6kagH0Z6abLoeRDns+m53SrpIEndNHv4m0Olj9Hp7sm1OiYz0VYlxRybhwgY8DFR6C3O7imEK02lAt/rjhEUjy2kIzeHqojJnuYgbGy0BRxMm4GFPiaQfBF9/Hn7x/JhZSWRls/dAQlRYGHi08jj6AwMf1yZbPS6FvuOJOBfLT8Opn4sp7vScVbTFt5/UZyyKqq6vALizQbBVrhGtsPxV6cY0fiPLBwpw/vYMaWzhLP+lNb/EuWMFLagg9uxTj2y5KKHvdrfOMNTJqABoSDIBhUPdao9DBCjDtVJ2V3fSIiGLR5wt287eA7oYfjiPk2N+eA+gawIDAQAB
           -----END PUBLIC KEY-----
-      #id: openid
-      #serviceId: ${PREFIX:}resource
+
 
 feign.hystrix.enabled: false
 logging.level.project.user.CursoClient: DEBUG

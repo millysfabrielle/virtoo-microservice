@@ -15,6 +15,7 @@ import java.util.UUID;
 @SpringBootApplication
 @RestController
 @EnableResourceServer
+//@EnableOAuth2Sso
 public class VirtooResourceApplication {
 
 	@RequestMapping("/")

@@ -11,6 +11,7 @@
 	<modules>
 		<module>virtoo-authserver</module>
 		<module>virtoo-gateway</module>
+		<module>virtoo-service-discovery</module>
 		<module>virtoo-resource</module>
 		<module>virtoo-curso</module>
 	</modules>

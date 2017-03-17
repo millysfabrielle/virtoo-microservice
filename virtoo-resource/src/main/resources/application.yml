@@ -1,10 +1,17 @@
-# Define the port where the Widget Foundry server would be running
+spring:
+  application:
+    name: resource
+
 server:
   port: 9000
   contextPath: /resource
 
-logging.level.org.springframework.security: DEBUG
-
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
 
 security:
   basic.enabled: false
@@ -24,4 +31,6 @@ security:
 
 
 feign.hystrix.enabled: false
+
 logging.level.project.user.CursoClient: DEBUG
+logging.level.org.springframework.security: DEBUG

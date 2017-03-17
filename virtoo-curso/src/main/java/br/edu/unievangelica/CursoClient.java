@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-@FeignClient(name="resource", url = "http://localhost:9000")
+@FeignClient("resource")
 public interface CursoClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/resource")

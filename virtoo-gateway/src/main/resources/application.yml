@@ -1,32 +1,33 @@
-
 server:
   port: 8080
 
-
-#cloud:
-#  config:
-#    failFast: true
-#    discovery:
-#      end: true
-
-#spring:
-#  aop:
-#    proxy-target-class: true
-
 zuul:
+  ignoredServices: "*"
   routes:
-    resource:
-      path: /resource/**
-      url: http://localhost:9000/resource
-      sensitive-headers:
-    curso:
-      path: /curso/**
-      url: http://localhost:9001/curso
-      sensitive-headers:
     user:
       path: /user/**
       url: http://localhost:9999/uaa/user
       sensitive-headers:
+    resource:
+      path: /resource/**
+      serviceId: resource
+    curso:
+      path: /curso/**
+      serviceId: http://localhost:9001
+      sensitive-headers:
+
+eureka:
+  instance:
+    hostname: gateway
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+#  instance:
+#    prefer-ip-address: true
+#    hostname: ${server.address}
+#    ip-address: ${server.address}
 
 security:
   sessions: ALWAYS

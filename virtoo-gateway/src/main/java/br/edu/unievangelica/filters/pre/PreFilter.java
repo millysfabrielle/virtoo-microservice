@@ -34,6 +34,7 @@ public class PreFilter extends ZuulFilter {
 
     @Override
     public Object run() {
+        System.out.println("---- PRE-FILTER RUN");
         RequestContext currentContext = RequestContext.getCurrentContext();
         HttpServletRequest request = currentContext.getRequest();
 

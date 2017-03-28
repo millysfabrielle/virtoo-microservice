@@ -1,9 +1,16 @@
 server:
-    port: ${PORT:8761}
+  port: 8761
 
 eureka:
-    client:
-        registerWithEureka: false
-        fetchRegistry: false
-        server:
-        waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    hostname: discovery
+    preferIpAddress: false
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false
+
+spring.cloud.config.discovery.enabled: true

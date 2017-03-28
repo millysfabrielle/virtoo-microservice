@@ -4,14 +4,20 @@ spring:
 
 server:
   port: 9000
-  contextPath: /resource
+  #contextPath: /resource
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: http://localhost:8761/eureka
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
   instance:
-    preferIpAddress: true
+    prefer-ip-address: false
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
 
 security:
   basic.enabled: false

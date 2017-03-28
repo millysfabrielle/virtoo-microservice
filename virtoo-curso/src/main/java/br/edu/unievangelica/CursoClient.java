@@ -8,7 +8,7 @@ import java.util.List;
 @FeignClient("resource")
 public interface CursoClient {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/resource")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
     List<Message> getItem();
 
 }

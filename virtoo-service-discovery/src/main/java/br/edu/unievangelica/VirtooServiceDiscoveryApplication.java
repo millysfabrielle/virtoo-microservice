@@ -13,6 +13,5 @@ public class VirtooServiceDiscoveryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VirtooServiceDiscoveryApplication.class, args);
-		//new SpringApplicationBuilder(VirtooServiceDiscoveryApplication.class).web(true).run(args);
 	}
 }

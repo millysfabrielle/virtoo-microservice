@@ -3,14 +3,23 @@ server:
 
 eureka:
   instance:
-    hostname: discovery
-    preferIpAddress: false
+    hostname: localhost
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  server:
-    enable-self-preservation: false
+
+#eureka:
+#  instance:
+#    hostname: discovery
+#    preferIpAddress: false
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  server:
+#    enable-self-preservation: false
 
 spring.cloud.config.discovery.enabled: true

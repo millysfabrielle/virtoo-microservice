@@ -4,39 +4,51 @@ spring:
 
 server:
   port: 9000
-  #contextPath: /resource
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-    healthcheck:
-      enabled: true
-    lease:
-      duration: 5
-  instance:
-    prefer-ip-address: false
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 2
+###################################
+# EUREKA
+###################################
+#eureka:
+#  instance:
+#    leaseRenewalIntervalInSeconds: 1
+#    leaseExpirationDurationInSeconds: 2
+#  client:
+#    serviceUrl:
+#      defaultZone: http://127.0.0.1:8761/eureka/
+#    healthcheck:
+#      enabled: true
+#    lease:
+#      duration: 5
+#
+#feign.hystrix.enabled: false
 
-security:
-  basic.enabled: false
-  oauth2:
-#    client:
-#      client-id: acme
-#      client-secret: acmesecret
-#      access-token-uri: http://localhost:8080/oauth/token
-#      user-authorization-uri: http://localhost:8080/oauth/authorize
-    resource:
-      userInfoUri: http://localhost:8080/user
-      jwt:
-        keyValue: |
-          -----BEGIN PUBLIC KEY-----
-          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhvMhw3FBuwzN6gX6kagH0Z6abLoeRDns+m53SrpIEndNHv4m0Olj9Hp7sm1OiYz0VYlxRybhwgY8DFR6C3O7imEK02lAt/rjhEUjy2kIzeHqojJnuYgbGy0BRxMm4GFPiaQfBF9/Hn7x/JhZSWRls/dAQlRYGHi08jj6AwMf1yZbPS6FvuOJOBfLT8Opn4sp7vScVbTFt5/UZyyKqq6vALizQbBVrhGtsPxV6cY0fiPLBwpw/vYMaWzhLP+lNb/EuWMFLagg9uxTj2y5KKHvdrfOMNTJqABoSDIBhUPdao9DBCjDtVJ2V3fSIiGLR5wt287eA7oYfjiPk2N+eA+gawIDAQAB
-          -----END PUBLIC KEY-----
+###################################
+# SECURITY
+###################################
+#security:
+#  basic.enabled: false
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:8080/user
+#      jwt:
+#        keyValue: |
+#          -----BEGIN PUBLIC KEY-----
+#          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhvMhw3FBuwzN6gX6kagH0Z6abLoeRDns+m53SrpIEndNHv4m0Olj9Hp7sm1OiYz0VYlxRybhwgY8DFR6C3O7imEK02lAt/rjhEUjy2kIzeHqojJnuYgbGy0BRxMm4GFPiaQfBF9/Hn7x/JhZSWRls/dAQlRYGHi08jj6AwMf1yZbPS6FvuOJOBfLT8Opn4sp7vScVbTFt5/UZyyKqq6vALizQbBVrhGtsPxV6cY0fiPLBwpw/vYMaWzhLP+lNb/EuWMFLagg9uxTj2y5KKHvdrfOMNTJqABoSDIBhUPdao9DBCjDtVJ2V3fSIiGLR5wt287eA7oYfjiPk2N+eA+gawIDAQAB
+#          -----END PUBLIC KEY-----
+
+###################################
+# DATABASE
+###################################
+spring.datasource.url: jdbc:postgresql://localhost:5432/resource_service
+spring.datasource.username: postgres
+spring.datasource.password: root
+spring.datasource.platform: POSTGRESQL
+
+spring.jpa.hibernate.ddl-auto: update
 
 
-feign.hystrix.enabled: false
-
-logging.level.project.user.CursoClient: DEBUG
-logging.level.org.springframework.security: DEBUG
+###################################
+# LOGGING
+###################################
+#logging.level.project.user.CursoClient: DEBUG
+#logging.level.org.springframework.security: DEBUG
